@@ -41,10 +41,7 @@
         const carafe2 = new Carafe(min,c2)
 
         let current_waiting = 1000
-        r = [
-            [[0,3],"remplir,min"],
-            [[3,0],"transvaser,min"]
-        ]
+        r  = resoudre(carafe1,carafe2,2)
         for(let i = 0; i < r.length; i++){
             console.log(current_waiting)
             setTimeout(function(){
@@ -67,50 +64,14 @@
                 }else{
                     const last_bin = r[i-1][0]
                     if(target == "min"){
-                        animate_transvaser(c2,c1,"left",bin,last_bin,max,min)
+                        animate_transvaser(c2,c1,"left",bin.reverse(),last_bin.reverse(),min,max)
+                    }else{
+                        animate_transvaser(c1,c2,"right",bin,last_bin,max,min)
                     }
                 }
             },current_waiting)
             current_waiting += 2100
         }
-        /*const r = resoudre(carafe1,carafe2,2)
-        for(let i = 1; i < r.length; i++){
-            const [action,target] = r[i][1].split(",")
-            const bin = r[i][0]
-            console.log(last_bin + " -> ", bin)
-            if(action=="transvaser"){
-                setTimeout(function(){
-                    if(target == "max"){
-                        animate_transvaser(c1,c2,"right",bin,last_bin)
-                    }else{
-                        animate_transvaser(c2,c1,"left",bin,last_bin)
-                    }
-                },current_waiting+2000)
-            }else if(action=="remplir"){
-                if(target == "max"){
-                    setTimeout(function(){
-                        animate_liquid(last_bin[0]*100/carafe1.max, carafe1.max*100,carafe1.carafe.querySelector(".content"),5000).play()
-                    },current_waiting+2000)
-                }else{
-                    setTimeout(function(){
-                        animate_liquid(last_bin[1]*100/carafe1.max, carafe2.max*100,carafe2.carafe.querySelector(".content"),5000).play()
-                    },current_waiting+2000)
-                }
-            }else{
-                if(target == "max"){
-                    setTimeout(function(){
-                        animate_liquid(last_bin[0]*100/carafe1.max, 0,carafe1.carafe.querySelector(".content"),5000).play()
-                    },current_waiting+2000)
-                }else{
-                    setTimeout(function(){
-                        animate_liquid(last_bin[1]*100/carafe1.max, 0,carafe2.carafe.querySelector(".content"),5000).play()
-                    },current_waiting+2000)
-                }
-            }
-            last_bin[0] = bin[0]
-            last_bin[1] = bin[1]
-            current_waiting += 2200
-        }*/
     </script>
 </body>
 </html>
