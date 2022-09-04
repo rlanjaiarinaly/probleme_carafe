@@ -1,0 +1,74 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+}
+h1{
+    margin-bottom: 30px;
+}
+
+.board{
+    width: 70%;
+    border-radius: 20px;
+    height: calc(100% - 50px);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.content{
+    position : absolute;
+    z-index: 0;
+    width: 100%;
+    bottom: 0;
+    background-color: aquamarine;
+    max-height: 90%;
+    transition: height 1s;
+}
+.carafe{
+    position: relative;
+    border: 3px solid black ;
+    width: 200px;
+    min-height: 300px;
+    text-align: center;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: none;   
+}
+
+@keyframes to_the_left{
+    from{
+        transform: rotate(0deg) ;
+    }
+    50%{
+        transform: rotate(-80deg) translateY(-300px) translateX(200px);
+    }
+    100%{
+        transform: rotate(0deg) translate(0);
+    }
+}
+@keyframes to_the_right{
+    from{
+        transform: rotate(0deg) ;
+    }
+    50%{
+        transform: rotate(80deg) translateY(-300px) translateX(-200px);
+    }
+    100%{
+        transform: rotate(0deg) translate(0);
+    }
+}
