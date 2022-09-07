@@ -26,8 +26,32 @@ h1{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
 }
 
+.stats{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 300px;
+    transition: display .5s;
+    overflow: scroll;
+    max-height: 100%;
+    overflow-x: hidden;
+}
+.stats h3{
+    text-align: center;
+}
+.stats div{
+    background-color: blue;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    padding: 10px 10px;
+    animation: show 1s;
+    font-size: 1.1em;
+}
 .content{
     position : absolute;
     z-index: 0;
@@ -37,17 +61,37 @@ h1{
     max-height: 90%;
     transition: height 1s;
 }
+.value{
+    z-index: 1;
+}
 .carafe{
     position: relative;
     border: 3px solid black ;
     width: 200px;
-    min-height: 300px;
+    min-height: 100px;
+    max-height: 600px;
     text-align: center;
     font-size: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-top: none;   
+}
+.target{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 2em;
+}
+
+.target strong{
+    color: darkcyan;
+}
+
+.carafe .max{
+    position: absolute;
+    bottom: 0;
+    transform: translateY(60px);
 }
 
 @keyframes to_the_left{
@@ -71,4 +115,16 @@ h1{
     100%{
         transform: rotate(0deg) translate(0);
     }
+}
+
+@keyframes show {
+    0%{
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);
+        opacity: 0.6;
+    }
+    
 }

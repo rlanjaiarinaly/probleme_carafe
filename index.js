@@ -1,4 +1,4 @@
-function animate_liquid(deb,fin,target,duree=700){
+function animate_liquid(deb,fin,target,duree=1000){
     const animate = new KeyframeEffect(target,
         [
             {
@@ -17,6 +17,8 @@ function animate_transvaser(source,target,direction,bin,last_bin,max,min){
     if(direction == "right"){
         d = 1
     }
+    const hauteurG = max <= 3 ? max*100 : 300 
+    const hauteurD = min <= 3 ? min*100 : 500 
     setTimeout(function(){
         setTimeout(function(){
             animate_liquid(last_bin[0]*100/max,bin[0]*100/max,source.querySelector(".content")).play()
@@ -29,7 +31,7 @@ function animate_transvaser(source,target,direction,bin,last_bin,max,min){
                 transform: "rotate(0deg)"
             },
             {
-                transform: `rotate(${d*80}deg) translateY(-300px) translateX(${-d*200}px)`
+                transform: `rotate(${d*80}deg) translateY(-300px) translateX(${-d*(direction=="right"?hauteurD : hauteurG)}px)`
             },
             {
                 transform: "rotate(0deg) translate(0)"
@@ -122,4 +124,12 @@ const resoudre = (c1,c2,target) => {
         }
     }
     return 0
+}
+
+function inverser(a){
+    let r = []
+    for(let i = a.length - 1; i >= 0; i--){
+        r.push(a[i])
+    }
+    return r
 }
